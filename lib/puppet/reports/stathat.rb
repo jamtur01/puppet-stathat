@@ -23,7 +23,7 @@ Puppet::Reports.register_report(:stathat) do
     self.metrics.each { |metric,data|
       data.values.each { |val|
         name = "#{self.host}.puppet.#{val[1].downcase.gsub(/\s/, '_')}_#{metric}"
-        StatHat::API.ez_post_value(name, STATHAT_EMAIL, val[2])
+        StatHat::API.ez_post_count(name, STATHAT_EMAIL, val[2])
       }
     }
   end
